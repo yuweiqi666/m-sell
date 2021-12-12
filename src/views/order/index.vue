@@ -53,9 +53,11 @@ export default {
     },
     totalPrice () {
       let result = 0
-      this.sellList.map(item => item.list).flat().forEach(c => {
-        result += c.num * c.price
-      })
+      if (this.sellList) {
+        this.sellList.map(item => item.list).flat().forEach(c => {
+          result += c.num * c.price
+        })
+      }
       return result
     }
   },
