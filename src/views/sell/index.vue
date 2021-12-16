@@ -1,6 +1,6 @@
 <template>
   <div class="sell">
-    <van-nav-bar :title="$route.name" :border='false' left-arrow @click-left="$router.back()"/>
+    <van-nav-bar :title="$route.meta.title" :border='false' left-arrow @click-left="$router.back()"/>
     <div class="sell-wrapper">
       <van-swipe autoplay="3000" class="my-swipe" :show-indicators='false'>
         <van-swipe-item v-for="(item, index) in swiperImgList" :key='index'>
@@ -25,11 +25,9 @@
 </template>
 
 <script>
-import { swiperImgList, sellList } from './data/index'
+import { swiperImgList, sellList } from '@/assets/data/sell/index'
 import SellList from './components/selllist.vue'
 import { getItem, setItem } from '@/utils/storage.js'
-getItem('filterOrderedSell') || setItem('filterOrderedSell', sellList)
-getItem('totalNum') || setItem('totalNum', 0)
 export default {
   name: 'Sell',
   components: {
@@ -38,8 +36,8 @@ export default {
   data () {
     return {
       swiperImgList,
-      sellList: getItem('filterOrderedSell'),
-      totalNum: getItem('totalNum')
+      sellList: getItem('filterOrderedSell') || sellList,
+      totalNum: getItem('totalNum') || 0
     }
   },
   computed: {

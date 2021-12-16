@@ -32,6 +32,7 @@
 import { getItem } from '@/utils/storage.js'
 import SellItem from '@/components/common/sellitem.vue'
 import NullSell from '@/components/common/nullsell.vue'
+import { sellList } from '@/assets/data/sell/index'
 export default {
   name: 'Order',
   components: {
@@ -40,16 +41,16 @@ export default {
   },
   data () {
     return {
-      sellList: getItem('filterOrderedSell'),
+      sellList: getItem('filterOrderedSell') ? getItem('filterOrderedSell') : sellList,
       active: 0
     }
   },
   computed: {
     relSellList () {
-      return this.sellList ? (this.sellList.map(item => ({
+      return (this.sellList.map(item => ({
         ...item,
         list: item.list.filter(item2 => item2.num > 0)
-      })).filter(item3 => item3.list && item3.list.length)) : []
+      })).filter(item3 => item3.list && item3.list.length))
     },
     totalPrice () {
       let result = 0

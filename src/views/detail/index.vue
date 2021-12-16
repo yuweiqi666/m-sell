@@ -1,6 +1,6 @@
 <template>
   <div class="detail">
-    <van-nav-bar :title="$route.name" :border='false' left-arrow  @click-left="$router.back()"/>
+    <van-nav-bar :title="$route.meta.title" :border='false' left-arrow  @click-left="$router.back()"/>
     <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
       <van-swipe-item>
         <van-image
@@ -65,6 +65,7 @@
 </template>
 
 <script>
+// console.log(123)
 export default {
   name: 'Detail',
   methods: {

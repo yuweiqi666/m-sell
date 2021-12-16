@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard">
-    <van-nav-bar :title="$route.name" :border='false'/>
+    <van-nav-bar :title="$route.meta.title" :border='false'/>
     <router-view />
     <van-tabbar route active-color="#ef8247" inactive-color="#F5C6AA">
       <van-tabbar-item icon="wap-home" to="/dashboard/home">首页</van-tabbar-item>

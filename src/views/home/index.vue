@@ -22,7 +22,7 @@
 
 <script>
 import SellIndex from './components/sell-index.vue'
-import { swiperImgList, sellIndexArray } from './data/index'
+import { swiperImgList, sellIndexArray } from '@/assets/data/home/index'
 export default {
   name: 'Home',
   components: {

@@ -21,9 +21,8 @@
 
 <script>
 import LoginBox from './components/loginbox.vue'
-import { userList } from './data/index'
+import { userList } from '@/assets/data/login/index'
 import { setItem, getItem } from '@/utils/storage'
-getItem('userList') || setItem('userList', userList)
 export default {
   name: 'Login',
   components: {
@@ -40,7 +39,7 @@ export default {
   },
   methods: {
     async handleLogin () {
-      const relUserList = getItem('userList')
+      const relUserList = getItem('userList') || userList
       const flag = relUserList.some(item => (item.username === this.userInfo.username) && (item.password === this.userInfo.password))
       if (flag) {
         this.$toast('登录成功')
@@ -59,7 +58,7 @@ export default {
         this.$toast(message)
         return false
       }
-      const relUserList = getItem('userList')
+      const relUserList = getItem('userList') || userList
       const flag = relUserList.some(item => item.username === this.userInfo.username)
       if (!flag) {
         this.active = 1
